@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    block content
+  script( src="/socket.io/socket.io.js")
+  script.
+    var socket = io();
+
+    socket.on('tick', function(data) {
+      console.log(data);
+
+      var timefield = document.getElementById("timefield");
+      if( timefield)
+              timefield.innerHTML = data;
+
+    });
